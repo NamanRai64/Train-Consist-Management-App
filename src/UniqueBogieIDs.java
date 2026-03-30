@@ -1,16 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class PassengerBogies {
+public class UniqueBogieIDs {
     public static void main(String[] args) {
-        // ANSI color codes
+        
+        // ANSI color codes for rich aesthetics
         String AMBER  = "\u001B[33m";
         String GREEN  = "\u001B[32m";
         String TEAL   = "\u001B[36m";
         String MUTED  = "\u001B[90m";
         String RESET  = "\u001B[0m";
 
-        // Display Header (from UC1 style)
+        // Display Header (Consistent with project style)
         System.out.println(AMBER + "  ███╗   ███╗ █████╗ ███╗  ██╗ █████╗  ██████╗ ███████╗██████╗");
         System.out.println(       "  ████╗ ████║██╔══██╗████╗ ██║██╔══██╗██╔════╝ ██╔════╝██╔══██╗");
         System.out.println(       "  ██╔████╔██║███████║██╔██╗██║███████║██║  ███╗█████╗  ██████╔╝");
@@ -18,40 +19,38 @@ public class PassengerBogies {
         System.out.println(       "  ██║ ╚═╝ ██║██║  ██║██║ ╚███║██║  ██║╚██████╔╝███████╗██║  ██║");
         System.out.println(       "  ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝" + RESET);
         System.out.println();
-        System.out.println(MUTED + "  [ UC-02 ]──[ Passenger Bogie Management ]──[ CRUD Operations ]" + RESET);
+        System.out.println(MUTED + "  [ UC-03 ]──[ Unique Bogie Identification ]──[ HashSet Operations ]" + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
 
-        // 1. Create an ArrayList<String> for passenger bogies.
-        List<String> passengerBogies = new ArrayList<>();
+        // 1. Create a HashSet<String> for bogie IDs.
+        Set<String> bogieIDs = new HashSet<>();
 
-        // 2. Add bogies: Sleeper, AC Chair, First Class.
-        System.out.println(TEAL + "  [ACTION] ADDING PASSENGER BOGIES: 'Sleeper', 'AC Chair', 'First Class'" + RESET);
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // 2. Add values, including duplicates intentionally.
+        System.out.println(TEAL + "  [ACTION] ATTEMPTING TO REGISTER BOGIE IDs . . ." + RESET);
+        System.out.println(MUTED + "  -> Registering: BG101" + RESET);
+        bogieIDs.add("BG101");
+        
+        System.out.println(MUTED + "  -> Registering: BG102" + RESET);
+        bogieIDs.add("BG102");
+        
+        System.out.println(AMBER + "  -> Registering Duplicate: BG101 (Alert! Should be ignored)" + RESET);
+        bogieIDs.add("BG101"); // This duplicate will be ignored by HashSet
 
-        // 3. Print the list after insertion.
-        System.out.println(GREEN + "  CURRENT TRAIN CONSIST : " + passengerBogies + RESET);
-        System.out.println(GREEN + "  INITIAL BOGIE COUNT   : " + passengerBogies.size() + RESET);
+        System.out.println(MUTED + "  -> Registering: BG103" + RESET);
+        bogieIDs.add("BG103");
+        
         System.out.println();
 
-        // 4. Remove one bogie (for example AC Chair).
-        System.out.println(AMBER + "  [ACTION] REMOVING BOGIE : 'AC Chair' . . ." + RESET);
-        passengerBogies.remove("AC Chair");
-        System.out.println(AMBER + "  UPDATED TRAIN CONSIST : " + passengerBogies + RESET);
+        // 3. Observe that duplicates are removed automatically.
+        System.out.println(GREEN + "  [STATUS] REGISTRATION COMPLETE." + RESET);
+        System.out.println(GREEN + "  UNIQUE BOGIE IDs IN SYSTEM : " + bogieIDs + RESET);
+        System.out.println(GREEN + "  TOTAL UNIQUE COUNT : " + bogieIDs.size() + RESET);
         System.out.println();
 
-        // 5. Use contains() to check if Sleeper exists.
-        System.out.println(TEAL + "  [ACTION] CHECKING EXISTENCE OF 'Sleeper' . . ." + RESET);
-        boolean exists = passengerBogies.contains("Sleeper");
-        System.out.println(TEAL + "  RESULT : " + (exists ? "Bogie 'Sleeper' IS present." : "Bogie 'Sleeper' IS NOT present.") + RESET);
-        System.out.println();
-
-        // 6. Print final list state.
+        // 4. Print the final set.
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(GREEN + "  FINAL TRAIN CONSIST   : " + passengerBogies + RESET);
-        System.out.println(GREEN + "  FINAL BOGIE COUNT     : " + passengerBogies.size() + RESET);
+        System.out.println(TEAL + "  VERIFICATION: HashSet ensured '" + bogieIDs.size() + "' unique registrations only." + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(       "   Learning Outcome: CRUD operations on ArrayList verified." + RESET);
+        System.out.println(       "   Learning Outcome: Data integrity enforced via Set uniqueness." + RESET);
     }
 }
