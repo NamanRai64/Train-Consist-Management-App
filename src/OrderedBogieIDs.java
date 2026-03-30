@@ -1,7 +1,6 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
 
-public class UniqueBogieIDs {
+public class OrderedBogieIDs {
     public static void run() {
         
         // ANSI color codes for rich aesthetics
@@ -19,38 +18,45 @@ public class UniqueBogieIDs {
         System.out.println(       "  ██║ ╚═╝ ██║██║  ██║██║ ╚███║██║  ██║╚██████╔╝███████╗██║  ██║");
         System.out.println(       "  ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝" + RESET);
         System.out.println();
-        System.out.println(MUTED + "  [ UC-03 ]──[ Unique Bogie Identification ]──[ HashSet Operations ]" + RESET);
+        System.out.println(MUTED + "  [ UC-04 ]──[ Physical Train Chaining ]──[ LinkedList Operations ]" + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
 
-        // 1. Create a HashSet<String> for bogie IDs.
-        Set<String> bogieIDs = new HashSet<>();
+        // 1. Create a LinkedList<String> for the consist.
+        LinkedList<String> trainConsist = new LinkedList<>();
 
-        // 2. Add values, including duplicates intentionally.
-        System.out.println(TEAL + "  [ACTION] ATTEMPTING TO REGISTER BOGIE IDs . . ." + RESET);
-        System.out.println(MUTED + "  -> Registering: BG101" + RESET);
-        bogieIDs.add("BG101");
+        // 2. Add bogies: Engine, Sleeper, AC, Cargo, Guard.
+        System.out.println(TEAL + "  [ACTION] FORMING INITIAL TRAIN STRUCTURE . . ." + RESET);
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
         
-        System.out.println(MUTED + "  -> Registering: BG102" + RESET);
-        bogieIDs.add("BG102");
-        
-        System.out.println(AMBER + "  -> Registering Duplicate: BG101 (Alert! Should be ignored)" + RESET);
-        bogieIDs.add("BG101"); // This duplicate will be ignored by HashSet
-
-        System.out.println(MUTED + "  -> Registering: BG103" + RESET);
-        bogieIDs.add("BG103");
-        
+        System.out.println(GREEN + "  INITIAL CONSIST : " + String.join(" ↔ ", trainConsist) + RESET);
         System.out.println();
 
-        // 3. Observe that duplicates are removed automatically.
-        System.out.println(GREEN + "  [STATUS] REGISTRATION COMPLETE." + RESET);
-        System.out.println(GREEN + "  UNIQUE BOGIE IDs IN SYSTEM : " + bogieIDs + RESET);
-        System.out.println(GREEN + "  TOTAL UNIQUE COUNT : " + bogieIDs.size() + RESET);
+        // 3. Insert a Pantry Car at position 2.
+        System.out.println(AMBER + "  [ACTION] ATTACHING 'Pantry Car' AT POSITION 2 . . ." + RESET);
+        trainConsist.add(2, "Pantry Car");
+        System.out.println(AMBER + "  UPDATED CONSIST : " + String.join(" ↔ ", trainConsist) + RESET);
         System.out.println();
 
-        // 4. Print the final set.
+        // 4. Remove the first and last bogie.
+        System.out.println(TEAL + "  [ACTION] DETACHING HEAD (Engine) AND TAIL (Guard) . . ." + RESET);
+        String detachedHead = trainConsist.removeFirst();
+        String detachedTail = trainConsist.removeLast();
+        
+        System.out.println(MUTED + "  -> Detached Head : " + detachedHead + RESET);
+        System.out.println(MUTED + "  -> Detached Tail : " + detachedTail + RESET);
+        System.out.println();
+
+        // 5. Display the final ordered train consist.
+        System.out.println(GREEN + "  FINAL ORDERED TRAIN CONSIST : " + String.join(" ↔ ", trainConsist) + RESET);
+        System.out.println(GREEN + "  FINAL BOGIE COUNT : " + trainConsist.size() + RESET);
+        
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(TEAL + "  VERIFICATION: HashSet ensured '" + bogieIDs.size() + "' unique registrations only." + RESET);
+        System.out.println(TEAL + "  VERIFICATION: LinkedList maintained physical sequence and allowed efficient middle insertion." + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(       "   Learning Outcome: Data integrity enforced via Set uniqueness." + RESET);
+        System.out.println(       "   Learning Outcome: Node-based chaining for physical ordering complete." + RESET);
     }
 }

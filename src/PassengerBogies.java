@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PassengerBogies {
-    public static void main(String[] args) {
+    public static void run() {
         // ANSI color codes
         String AMBER  = "\u001B[33m";
         String GREEN  = "\u001B[32m";

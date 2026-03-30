@@ -1,7 +1,7 @@
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class UniqueBogieIDs {
+public class PreservedInsertionOrder {
     public static void run() {
         
         // ANSI color codes for rich aesthetics
@@ -19,38 +19,38 @@ public class UniqueBogieIDs {
         System.out.println(       "  ██║ ╚═╝ ██║██║  ██║██║ ╚███║██║  ██║╚██████╔╝███████╗██║  ██║");
         System.out.println(       "  ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝" + RESET);
         System.out.println();
-        System.out.println(MUTED + "  [ UC-03 ]──[ Unique Bogie Identification ]──[ HashSet Operations ]" + RESET);
+        System.out.println(MUTED + "  [ UC-05 ]──[ Safe Insertion Order ]──[ LinkedHashSet Operations ]" + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
 
-        // 1. Create a HashSet<String> for bogie IDs.
-        Set<String> bogieIDs = new HashSet<>();
+        // 1. Create a LinkedHashSet<String> for the train formation.
+        Set<String> trainFormation = new LinkedHashSet<>();
 
-        // 2. Add values, including duplicates intentionally.
-        System.out.println(TEAL + "  [ACTION] ATTEMPTING TO REGISTER BOGIE IDs . . ." + RESET);
-        System.out.println(MUTED + "  -> Registering: BG101" + RESET);
-        bogieIDs.add("BG101");
+        // 2. Attach bogies: Engine, Sleeper, Cargo, Guard.
+        System.out.println(TEAL + "  [ACTION] ATTACHING BOGIES IN SEQUENCE . . ." + RESET);
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
         
-        System.out.println(MUTED + "  -> Registering: BG102" + RESET);
-        bogieIDs.add("BG102");
-        
-        System.out.println(AMBER + "  -> Registering Duplicate: BG101 (Alert! Should be ignored)" + RESET);
-        bogieIDs.add("BG101"); // This duplicate will be ignored by HashSet
-
-        System.out.println(MUTED + "  -> Registering: BG103" + RESET);
-        bogieIDs.add("BG103");
-        
+        System.out.println(GREEN + "  CURRENT FORMATION : " + String.join(" -> ", trainFormation) + RESET);
         System.out.println();
 
-        // 3. Observe that duplicates are removed automatically.
-        System.out.println(GREEN + "  [STATUS] REGISTRATION COMPLETE." + RESET);
-        System.out.println(GREEN + "  UNIQUE BOGIE IDs IN SYSTEM : " + bogieIDs + RESET);
-        System.out.println(GREEN + "  TOTAL UNIQUE COUNT : " + bogieIDs.size() + RESET);
+        // 3. Attempt to attach a duplicate bogie intentionally (example: Sleeper again).
+        System.out.println(AMBER + "  [ACTION] ATTEMPTING DUPLICATE ATTACHMENT : 'Sleeper' . . ." + RESET);
+        boolean added = trainFormation.add("Sleeper"); 
+        
+        if (!added) {
+            System.out.println(AMBER + "  [ALERT]  Duplicate 'Sleeper' ignored by LinkedHashSet!" + RESET);
+        }
         System.out.println();
 
-        // 4. Print the final set.
+        // 4. Display the final formation order.
+        System.out.println(GREEN + "  FINAL TRAIN FORMATION (Order Preserved) : " + String.join(" -> ", trainFormation) + RESET);
+        System.out.println(GREEN + "  FINAL BOGIE COUNT : " + trainFormation.size() + RESET);
+        
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(TEAL + "  VERIFICATION: HashSet ensured '" + bogieIDs.size() + "' unique registrations only." + RESET);
+        System.out.println(TEAL + "  VERIFICATION: Combined uniqueness of HashSet with ordering of LinkedList." + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(       "   Learning Outcome: Data integrity enforced via Set uniqueness." + RESET);
+        System.out.println(       "   Learning Outcome: Safe, ordered composition without manual loops." + RESET);
     }
 }

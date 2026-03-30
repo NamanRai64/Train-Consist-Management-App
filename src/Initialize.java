@@ -4,6 +4,20 @@ import java.util.List;
 public class Initialize {
         public static void main(String[] args) {
             printAsciiArt();
+
+            System.out.println("\n  [ EXECUTING UC-02 ] . . .");
+            PassengerBogies.run();
+
+            System.out.println("\n  [ EXECUTING UC-03 ] . . .");
+            UniqueBogieIDs.run();
+
+            System.out.println("\n  [ EXECUTING UC-04 ] . . .");
+            OrderedBogieIDs.run();
+
+            System.out.println("\n  [ EXECUTING UC-05 ] . . .");
+            PreservedInsertionOrder.run();
+
+            System.out.println("\n  SYSTEM EXECUTION COMPLETE.");
         }
 
         public static void printAsciiArt() {
