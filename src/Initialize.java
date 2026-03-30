@@ -17,6 +17,9 @@ public class Initialize {
             System.out.println("\n  [ EXECUTING UC-05 ] . . .");
             PreservedInsertionOrder.run();
 
+            System.out.println("\n  [ EXECUTING UC-06 ] . . .");
+            BogieCapacity.run();
+
             System.out.println("\n  SYSTEM EXECUTION COMPLETE.");
         }
 
