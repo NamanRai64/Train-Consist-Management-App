@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UniqueBogieIDs {
-    public static void main(String[] args) {
+    public static void run() {
         
         // ANSI color codes for rich aesthetics
         String AMBER  = "\u001B[33m";

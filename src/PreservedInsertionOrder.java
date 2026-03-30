@@ -2,7 +2,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class PreservedInsertionOrder {
-    public static void main(String[] args) {
+    public static void run() {
         
         // ANSI color codes for rich aesthetics
         String AMBER  = "\u001B[33m";
