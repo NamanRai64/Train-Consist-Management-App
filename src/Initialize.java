@@ -50,6 +50,18 @@ public class Initialize {
             System.out.println("\n  [ EXECUTING UC-16 ] . . .");
             ManualSorting.run();
 
+            System.out.println("\n  [ EXECUTING UC-17 ] . . .");
+            LibrarySorting.run();
+
+            System.out.println("\n  [ EXECUTING UC-18 ] . . .");
+            LinearSearch.run();
+
+            System.out.println("\n  [ EXECUTING UC-19 ] . . .");
+            SmartSearch.run();
+
+            System.out.println("\n  [ EXECUTING UC-20 ] . . .");
+            StateValidation.run();
+
             System.out.println("\n  SYSTEM EXECUTION COMPLETE.");
         }
 
