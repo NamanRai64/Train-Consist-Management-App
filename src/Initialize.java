@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Initialize {
-        public static void main(String[] args) {
+        public static void main(String[] args) throws InvalidCapacityException {
             printAsciiArt();
 
             System.out.println("\n  [ EXECUTING UC-02 ] . . .");
@@ -19,6 +19,48 @@ public class Initialize {
 
             System.out.println("\n  [ EXECUTING UC-06 ] . . .");
             BogieCapacity.run();
+
+            System.out.println("\n  [ EXECUTING UC-07 ] . . .");
+            SortedBogies.run();
+
+            System.out.println("\n  [ EXECUTING UC-08 ] . . .");
+            FilteredBogies.run();
+
+            System.out.println("\n  [ EXECUTING UC-09 ] . . .");
+            GroupedBogies.run();
+
+            System.out.println("\n  [ EXECUTING UC-10 ] . . .");
+            TotalCapacity.run();
+
+            System.out.println("\n  [ EXECUTING UC-11 ] . . .");
+            FormatValidation.run();
+
+            System.out.println("\n  [ EXECUTING UC-12 ] . . .");
+            SafetyCompliance.run();
+
+            System.out.println("\n  [ EXECUTING UC-13 ] . . .");
+            PerformanceBenchmark.run();
+
+            System.out.println("\n  [ EXECUTING UC-14 ] . . .");
+            CapacityValidation.run();
+
+            System.out.println("\n  [ EXECUTING UC-15 ] . . .");
+            SafeCargoAssignment.run();
+
+            System.out.println("\n  [ EXECUTING UC-16 ] . . .");
+            ManualSorting.run();
+
+            System.out.println("\n  [ EXECUTING UC-17 ] . . .");
+            LibrarySorting.run();
+
+            System.out.println("\n  [ EXECUTING UC-18 ] . . .");
+            LinearSearch.run();
+
+            System.out.println("\n  [ EXECUTING UC-19 ] . . .");
+            SmartSearch.run();
+
+            System.out.println("\n  [ EXECUTING UC-20 ] . . .");
+            StateValidation.run();
 
             System.out.println("\n  SYSTEM EXECUTION COMPLETE.");
         }
