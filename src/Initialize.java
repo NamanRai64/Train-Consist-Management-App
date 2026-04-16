@@ -20,6 +20,15 @@ public class Initialize {
             System.out.println("\n  [ EXECUTING UC-06 ] . . .");
             BogieCapacity.run();
 
+            System.out.println("\n  [ EXECUTING UC-07 ] . . .");
+            SortedBogies.run();
+
+            System.out.println("\n  [ EXECUTING UC-08 ] . . .");
+            FilteredBogies.run();
+
+            System.out.println("\n  [ EXECUTING UC-09 ] . . .");
+            GroupedBogies.run();
+
             System.out.println("\n  SYSTEM EXECUTION COMPLETE.");
         }
 
