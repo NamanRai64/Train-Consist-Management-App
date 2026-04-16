@@ -38,6 +38,18 @@ public class Initialize {
             System.out.println("\n  [ EXECUTING UC-12 ] . . .");
             SafetyCompliance.run();
 
+            System.out.println("\n  [ EXECUTING UC-13 ] . . .");
+            PerformanceBenchmark.run();
+
+            System.out.println("\n  [ EXECUTING UC-14 ] . . .");
+            CapacityValidation.run();
+
+            System.out.println("\n  [ EXECUTING UC-15 ] . . .");
+            SafeCargoAssignment.run();
+
+            System.out.println("\n  [ EXECUTING UC-16 ] . . .");
+            ManualSorting.run();
+
             System.out.println("\n  SYSTEM EXECUTION COMPLETE.");
         }
 
