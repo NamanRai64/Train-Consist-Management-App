@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UseCase10TrainConsistMgmntTest {
 
     @Test
-    void testReduce_TotalSeatCalculation() {
+    void testReduce_TotalSeatCalculation() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
@@ -19,7 +19,7 @@ public class UseCase10TrainConsistMgmntTest {
     }
 
     @Test
-    void testReduce_MultipleBogiesAggregation() {
+    void testReduce_MultipleBogiesAggregation() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("General", 90));
@@ -33,7 +33,7 @@ public class UseCase10TrainConsistMgmntTest {
     }
 
     @Test
-    void testReduce_SingleBogieCapacity() {
+    void testReduce_SingleBogieCapacity() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         
@@ -56,7 +56,7 @@ public class UseCase10TrainConsistMgmntTest {
     }
 
     @Test
-    void testReduce_CorrectCapacityExtraction() {
+    void testReduce_CorrectCapacityExtraction() throws InvalidCapacityException {
         Bogie bogie = new Bogie("Sleeper", 72);
         List<Bogie> bogies = List.of(bogie);
         
@@ -69,7 +69,7 @@ public class UseCase10TrainConsistMgmntTest {
     }
 
     @Test
-    void testReduce_AllBogiesIncluded() {
+    void testReduce_AllBogiesIncluded() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 10));
         bogies.add(new Bogie("Sleeper", 20));
@@ -83,7 +83,7 @@ public class UseCase10TrainConsistMgmntTest {
     }
 
     @Test
-    void testReduce_OriginalListUnchanged() {
+    void testReduce_OriginalListUnchanged() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));

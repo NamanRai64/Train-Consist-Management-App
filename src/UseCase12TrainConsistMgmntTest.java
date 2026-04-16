@@ -8,8 +8,8 @@ public class UseCase12TrainConsistMgmntTest {
     @Test
     void testSafety_AllBogiesValid() {
         List<GoodsBogie> bogies = new ArrayList<>();
-        bogies.add(new GoodsBogie("Box", "Coal"));
-        bogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        bogies.add(new GoodsBogie("Box", "Rectangular", "Coal"));
+        bogies.add(new GoodsBogie("Cylindrical", "Circular", "Petroleum"));
         
         boolean isSafe = bogies.stream().allMatch(b -> 
             !b.getType().equalsIgnoreCase("Cylindrical") || b.getCargo().equalsIgnoreCase("Petroleum")
@@ -21,7 +21,7 @@ public class UseCase12TrainConsistMgmntTest {
     @Test
     void testSafety_CylindricalWithInvalidCargo() {
         List<GoodsBogie> bogies = new ArrayList<>();
-        bogies.add(new GoodsBogie("Cylindrical", "Coal"));
+        bogies.add(new GoodsBogie("Cylindrical", "Circular", "Coal"));
         
         boolean isSafe = bogies.stream().allMatch(b -> 
             !b.getType().equalsIgnoreCase("Cylindrical") || b.getCargo().equalsIgnoreCase("Petroleum")
@@ -33,8 +33,8 @@ public class UseCase12TrainConsistMgmntTest {
     @Test
     void testSafety_NonCylindricalBogiesAllowed() {
         List<GoodsBogie> bogies = new ArrayList<>();
-        bogies.add(new GoodsBogie("Open", "Coal"));
-        bogies.add(new GoodsBogie("Box", "Grain"));
+        bogies.add(new GoodsBogie("Open", "Rectangular", "Coal"));
+        bogies.add(new GoodsBogie("Box", "Rectangular", "Grain"));
         
         boolean isSafe = bogies.stream().allMatch(b -> 
             !b.getType().equalsIgnoreCase("Cylindrical") || b.getCargo().equalsIgnoreCase("Petroleum")
@@ -46,8 +46,8 @@ public class UseCase12TrainConsistMgmntTest {
     @Test
     void testSafety_MixedBogiesWithViolation() {
         List<GoodsBogie> bogies = new ArrayList<>();
-        bogies.add(new GoodsBogie("Box", "Coal"));
-        bogies.add(new GoodsBogie("Cylindrical", "Chemicals"));
+        bogies.add(new GoodsBogie("Box", "Rectangular", "Coal"));
+        bogies.add(new GoodsBogie("Cylindrical", "Circular", "Chemicals"));
         
         boolean isSafe = bogies.stream().allMatch(b -> 
             !b.getType().equalsIgnoreCase("Cylindrical") || b.getCargo().equalsIgnoreCase("Petroleum")

@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FilteredBogies {
-    public static void run() {
+    public static void run() throws InvalidCapacityException {
         // ANSI color codes for rich aesthetics
         String AMBER  = "\u001B[33m";
         String GREEN  = "\u001B[32m";

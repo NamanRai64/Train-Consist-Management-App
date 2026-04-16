@@ -25,10 +25,10 @@ public class SafetyCompliance {
         // 1. Prepare a list of goods bogies.
         List<GoodsBogie> goodsBogies = new ArrayList<>();
         System.out.println(TEAL + "  [ACTION] LOADING GOODS BOGIE DATA FOR SAFETY CHECK . . ." + RESET);
-        goodsBogies.add(new GoodsBogie("Box", "Coal"));
-        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
-        goodsBogies.add(new GoodsBogie("Open", "Grain"));
-        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Box", "Rectangular", "Coal"));
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Circular", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Open", "Rectangular", "Grain"));
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Circular", "Petroleum"));
 
         System.out.println(GREEN + "  LIST LOADED WITH " + goodsBogies.size() + " GOODS BOGIES." + RESET);
         System.out.println(MUTED + "  Current Formation: " + goodsBogies + RESET);

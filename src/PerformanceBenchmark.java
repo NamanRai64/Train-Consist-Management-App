@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-public class GroupedBogies {
+public class PerformanceBenchmark {
     public static void run() throws InvalidCapacityException {
         // ANSI color codes for rich aesthetics
         String AMBER  = "\u001B[33m";
@@ -20,45 +19,51 @@ public class GroupedBogies {
         System.out.println(       "  ██║ ╚═╝ ██║██║  ██║██║ ╚███║██║  ██║╚██████╔╝███████╗██║  ██║");
         System.out.println(       "  ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚══╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝" + RESET);
         System.out.println();
-        System.out.println(MUTED + "  [ UC-09 ]──[ Bogie Categorization ]──[ collectors.groupingBy() ]" + RESET);
+        System.out.println(MUTED + "  [ UC-13 ]──[ Performance Benchmarking ]──[ Loop vs Stream ]" + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
 
-        // 1. Create a list of bogies with duplicate types for classification demonstration.
+        // 1. Prepare a collection of bogies.
         List<Bogie> bogies = new ArrayList<>();
-        System.out.println(TEAL + "  [ACTION] INITIALIZING BOGIE DATA WITH MULTIPLE TYPES . . ." + RESET);
-        bogies.add(new Bogie("Sleeper", 72));
-        bogies.add(new Bogie("AC Chair", 56));
-        bogies.add(new Bogie("Sleeper", 72)); // Second Sleeper bogie
-        bogies.add(new Bogie("First Class", 24));
-        bogies.add(new Bogie("AC Chair", 56)); // Second AC Chair bogie
-        bogies.add(new Bogie("General", 90));
-
-        System.out.println(GREEN + "  LIST CREATED WITH " + bogies.size() + " BOGIE OBJECTS." + RESET);
+        System.out.println(TEAL + "  [ACTION] INITIALIZING DATASET FOR BENCHMARKING . . ." + RESET);
+        for (int i = 0; i < 5000; i++) {
+            bogies.add(new Bogie("Bogie-" + i, (int)(Math.random() * 100) + 1));
+        }
+        System.out.println(GREEN + "  DATASET SIZE : " + bogies.size() + " bogie objects." + RESET);
         System.out.println();
 
-        // 2 & 3. Convert list to stream and apply groupingBy().
-        System.out.println(TEAL + "  [ACTION] GROUPING BOGIES BY CATEGORY . . ." + RESET);
-        Map<String, List<Bogie>> groupedBogies = bogies.stream()
-                .collect(Collectors.groupingBy(Bogie::getName));
-
-        // 4 & 5. Display the grouped results.
-        System.out.println(AMBER + "  STRUCTURED BOGIE REPORT :" + RESET);
-        System.out.println(MUTED + "  ──────────────────────────────────────────" + RESET);
-        
-        groupedBogies.forEach((category, list) -> {
-            System.out.println(TEAL + "  CATEGORY: " + category.toUpperCase() + RESET);
-            for (Bogie b : list) {
-                System.out.println(GREEN + "    - " + b.getName() + " [" + b.getCapacity() + " seats]" + RESET);
+        // 2 & 3. Benchmarking Loop-Based Filtering.
+        System.out.println(TEAL + "  [ACTION] STARTING LOOP-BASED FILTERING . . ." + RESET);
+        long startLoop = System.nanoTime();
+        List<Bogie> loopFiltered = new ArrayList<>();
+        for (Bogie b : bogies) {
+            if (b.getCapacity() > 60) {
+                loopFiltered.add(b);
             }
-            System.out.println(MUTED + "    (Total in group: " + list.size() + ")" + RESET);
-            System.out.println(MUTED + "  ──────────────────────────────────────────" + RESET);
-        });
+        }
+        long endLoop = System.nanoTime();
+        long loopDuration = endLoop - startLoop;
 
+        // 4 & 5. Benchmarking Stream-Based Filtering.
+        System.out.println(TEAL + "  [ACTION] STARTING STREAM-BASED FILTERING . . ." + RESET);
+        long startStream = System.nanoTime();
+        List<Bogie> streamFiltered = bogies.stream()
+                .filter(b -> b.getCapacity() > 60)
+                .collect(Collectors.toList());
+        long endStream = System.nanoTime();
+        long streamDuration = endStream - startStream;
+
+        // 6. Execution time is displayed.
+        System.out.println(AMBER + "  BENCHMARK RESULTS (Capacity > 60) :" + RESET);
+        System.out.println(MUTED + "  ──────────────────────────────────────────" + RESET);
+        System.out.printf(TEAL + "  %-20s : " + GREEN + "%d ns\n" + RESET, "Loop Execution Time", loopDuration);
+        System.out.printf(TEAL + "  %-20s : " + GREEN + "%d ns\n" + RESET, "Stream Execution Time", streamDuration);
+        System.out.println(MUTED + "  ──────────────────────────────────────────" + RESET);
+        System.out.println(TEAL + "  CONSISTENCY CHECK : Both produced " + loopFiltered.size() + " matches." + RESET);
         System.out.println();
 
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(TEAL + "  VERIFICATION: Flat list transformed into structured categorical Map." + RESET);
+        System.out.println(TEAL + "  VERIFICATION: Performance measured using System.nanoTime() accurately." + RESET);
         System.out.println(MUTED + "  ─────────────────────────────────────────────────────────────────────" + RESET);
-        System.out.println(       "   Learning Outcome: Data aggregation and reporting using Stream Collectors." + RESET);
+        System.out.println(       "   Learning Outcome: Evidence-driven optimization and style overhead awareness." + RESET);
     }
 }

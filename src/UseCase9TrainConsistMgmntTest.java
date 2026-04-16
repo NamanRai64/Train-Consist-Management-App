@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UseCase9TrainConsistMgmntTest {
 
     @Test
-    void testGrouping_BogiesGroupedByType() {
+    void testGrouping_BogiesGroupedByType() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
@@ -21,7 +21,7 @@ public class UseCase9TrainConsistMgmntTest {
     }
 
     @Test
-    void testGrouping_MultipleBogiesInSameGroup() {
+    void testGrouping_MultipleBogiesInSameGroup() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("Sleeper", 72));
@@ -34,7 +34,7 @@ public class UseCase9TrainConsistMgmntTest {
     }
 
     @Test
-    void testGrouping_DifferentBogieTypes() {
+    void testGrouping_DifferentBogieTypes() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
@@ -57,7 +57,7 @@ public class UseCase9TrainConsistMgmntTest {
     }
 
     @Test
-    void testGrouping_SingleBogieCategory() {
+    void testGrouping_SingleBogieCategory() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("Sleeper", 68));
@@ -70,7 +70,7 @@ public class UseCase9TrainConsistMgmntTest {
     }
 
     @Test
-    void testGrouping_MapContainsCorrectKeys() {
+    void testGrouping_MapContainsCorrectKeys() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
@@ -85,7 +85,7 @@ public class UseCase9TrainConsistMgmntTest {
     }
 
     @Test
-    void testGrouping_GroupSizeValidation() {
+    void testGrouping_GroupSizeValidation() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("Sleeper", 72));
@@ -99,7 +99,7 @@ public class UseCase9TrainConsistMgmntTest {
     }
 
     @Test
-    void testGrouping_OriginalListUnchanged() {
+    void testGrouping_OriginalListUnchanged() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));

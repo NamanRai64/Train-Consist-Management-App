@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UseCase8TrainConsistMgmntTest {
 
     @Test
-    void testFilter_CapacityGreaterThanThreshold() {
+    void testFilter_CapacityGreaterThanThreshold() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
@@ -21,7 +21,7 @@ public class UseCase8TrainConsistMgmntTest {
     }
 
     @Test
-    void testFilter_CapacityEqualToThreshold() {
+    void testFilter_CapacityEqualToThreshold() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("AC Chair", 60));
         
@@ -33,7 +33,7 @@ public class UseCase8TrainConsistMgmntTest {
     }
 
     @Test
-    void testFilter_CapacityLessThanThreshold() {
+    void testFilter_CapacityLessThanThreshold() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("First Class", 24));
         
@@ -45,7 +45,7 @@ public class UseCase8TrainConsistMgmntTest {
     }
 
     @Test
-    void testFilter_MultipleBogiesMatching() {
+    void testFilter_MultipleBogiesMatching() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("General", 90));
@@ -59,7 +59,7 @@ public class UseCase8TrainConsistMgmntTest {
     }
 
     @Test
-    void testFilter_NoBogiesMatching() {
+    void testFilter_NoBogiesMatching() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("AC Chair", 56));
         
@@ -71,7 +71,7 @@ public class UseCase8TrainConsistMgmntTest {
     }
 
     @Test
-    void testFilter_AllBogiesMatching() {
+    void testFilter_AllBogiesMatching() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("General", 90));
@@ -95,7 +95,7 @@ public class UseCase8TrainConsistMgmntTest {
     }
 
     @Test
-    void testFilter_OriginalListUnchanged() {
+    void testFilter_OriginalListUnchanged() throws InvalidCapacityException {
         List<Bogie> bogies = new ArrayList<>();
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
