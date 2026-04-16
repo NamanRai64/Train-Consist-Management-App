@@ -29,6 +29,15 @@ public class Initialize {
             System.out.println("\n  [ EXECUTING UC-09 ] . . .");
             GroupedBogies.run();
 
+            System.out.println("\n  [ EXECUTING UC-10 ] . . .");
+            TotalCapacity.run();
+
+            System.out.println("\n  [ EXECUTING UC-11 ] . . .");
+            FormatValidation.run();
+
+            System.out.println("\n  [ EXECUTING UC-12 ] . . .");
+            SafetyCompliance.run();
+
             System.out.println("\n  SYSTEM EXECUTION COMPLETE.");
         }
 
